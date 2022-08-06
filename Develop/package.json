@@ -1,14 +1,25 @@
 {
-  "name": "static-site",
+  "name": "readme-creator",
   "version": "1.0.0",
-  "description": "",
+  "description": "Readme creation software",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Eric McGhee",
   "license": "ISC",
   "dependencies": {
     "inquirer": "8.2.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/senseier2/ReadMe-Creator-Week09.git"
+  },
+  "keywords": [
+    "readme"
+  ],
+  "bugs": {
+    "url": "https://github.com/senseier2/ReadMe-Creator-Week09/issues"
+  },
+  "homepage": "https://github.com/senseier2/ReadMe-Creator-Week09#readme"
 }
