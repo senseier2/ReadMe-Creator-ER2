@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+//const { json } = require("stream/consumers");
 
 // TODO: Create an array of questions for user input
 //const questions = [];
@@ -40,7 +41,7 @@ inquirer
     {
      type: 'input',
      message: 'description:',
-     name: 'Name',
+     name: 'test',
     },
 
   ])
@@ -57,14 +58,17 @@ inquirer
         usage,
         license,
         contributors, 
-        testInstructions
+        testInstructions,
         gitHub,
         email,
+        test,
 
     }) =>
-    
-
     `
+    ${testInstructions}
+    ${usage}
+    ${title}
+
 
     ## Description
     ${description}
@@ -72,17 +76,29 @@ inquirer
     ## Table of contents
 
     ## Installation
-    ## Usage
-    ## License
-    ## Contributing
-    ## Test
+    ${installation}
 
+    ## Usage
+    ${usage}
+
+    ## License
+    This application is  covered under the [${license}] license.
+
+    ## Contributing
+    ${contributors}
+
+    ## Test
+    ${test}
+
+    ## Questions
+    ${gitHub}
+    ${email}
     `
 
+    let readmeDoc = readmeTemp(data)
+    const filename = `${data.description.toLowerCase().split(' ').join('')}.md`;
 
-    const filename = `${data.Name.toLowerCase().split(' ').join('')}.md`;
-
-    fs.writeFile(filename, JSON.stringify(readmeTemp, null, '\t'), (err) =>
+    fs.writeFile(filename, JSON.stringify(readmeDoc, null, '\t'), (err) =>
       err ? console.log(err) : console.log('Success!')
     );
   });
