@@ -21,23 +21,35 @@ inquirer
       type: 'checkbox',
       message: 'License information',
       name: 'license',
-      choices: ["MIT", "GPLv2", "Apache", "GLPv3", "BSD 3-clause", "Unlicense"],
+      choices: [
+        {name:"MIT", value: "MIT"},
+        {name:"GPLv2", value: "GPLv2"}, 
+        {name:"Apache", value: "Apache"}, 
+        {name:"GLPv3", value: "GLPv3"}, 
+        {name:"BSD 3-clause", value: "BSD 3-clause"}, 
+        {name:"Unlicense", value: "Unlicense"},
+        ],
 
     },
     {
-      type: 'confirm',
-      message: 'Would you like to add an installation description',
+      type: 'input',
+      message: 'How do you install your project',
       name: 'installation',
     },
     {
       type: 'input',
-      message: 'How do you use this prroject:',
+      message: 'How do you use this project:',
       name: 'usage',
     },
     {
       type: 'input',
+      message: 'Please provide testing instructions',
+      name: 'test',
+    },
+    {
+      type: 'input',
       message: 'Enter your GitHub Address:',
-      name: 'github',
+      name: 'gitHub',
     },
     {
       type: 'input',
@@ -64,14 +76,16 @@ inquirer
         usage,
         license,
         contributors, 
-        testInstructions,
+        test,
         gitHub,
         email,
-        test,
 
     }) =>
     `
-# ${title}
+    
+${renderLicenseBadge(license)}    
+
+# Project Title: ${title}
 
 ## Description
     ${description}
@@ -80,12 +94,12 @@ inquirer
 
 ## Table of Contents
 
-[Installation](#installation)
-[Usage](#usage)
-[License](#license)
-[Contributors](#contributors)
-[Test](#test)
-[Questions](#questions)
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributors](#contributors)
+* [Test](#test)
+* [Questions](#questions)
 
 ## Description
     ${description}
@@ -97,17 +111,15 @@ inquirer
     ${usage}
 
 ## License
-    This application is  covered under the [${license}] license.
+    This application is  covered under the [${license}]license.
 
 ## Contributors
     ${contributors}
 
-## Tests
+## Test Instructions
     ${test}
 
 ## Questions
-    ${gitHub}
-    ${email}
 
 Please feel free to send questions via my GitHub profile:(https://github.com/${gitHub})
 Or email me via: ${email}
@@ -124,7 +136,28 @@ Or email me via: ${email}
 
 //TODO: Create a function to append section titles to Readme
 
-
+// TODO: Creat a function that renders a badge for the licensing
+function renderLicenseBadge(license) {
+    switch (license) {
+      case "MIT":
+       return licenseBadge = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+        break;
+      case "GPLv2":
+         return licenseBadge = "[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)";
+        break;
+      case "Apache":
+        return licenseBadge = "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
+        break;
+      case "GPLv3":
+       return licenseBadge =  "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)";
+        break;
+      case "BSD 3-clause":
+        return licenseBadge =  "[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)";
+        break;
+      case "Unlicense":
+        return licenseBadge = licenseBadge = "";
+    }
+    }
 
 
 // TODO: Create a function to initialize app
