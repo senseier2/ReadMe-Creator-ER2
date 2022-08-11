@@ -38,6 +38,6 @@
 
 ## Questions
 
-Please feel free to send questions via my GitHub profile: [senseier2](https://github.com/ senseier2)
+Please feel free to send questions via my GitHub profile: [senseier2](https://github.com/senseier2)
 Or email me via: eric.mcghee@northwestern.edu
     

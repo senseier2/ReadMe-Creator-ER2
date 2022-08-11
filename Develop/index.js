@@ -113,7 +113,7 @@ ${renderLicenseBadge(license)}
 
 ## Questions
 
-Please feel free to send questions via my GitHub profile: [${gitHub}](https://github.com/ ${gitHub})
+Please feel free to send questions via my GitHub profile: [${gitHub}](https://github.com/${gitHub})
 Or email me via: ${email}
     `
     // Collecting the data into a readme document varible
