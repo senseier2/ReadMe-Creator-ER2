@@ -41,7 +41,7 @@ inquirer
     },
     {
       type: 'input',
-      message: 'Enter your GitHub Address:',
+      message: 'Enter your GitHub Username:',
       name: 'gitHub',
     },
     {
@@ -113,15 +113,15 @@ ${renderLicenseBadge(license)}
 
 ## Questions
 
-Please feel free to send questions via my GitHub profile:(https://github.com/${gitHub})
+Please feel free to send questions via my GitHub profile: [${gitHub}](https://github.com/ ${gitHub})
 Or email me via: ${email}
     `
     // Collecting the data into a readme document varible
     let readmeDoc = readmeTemp(data)
     //formatting the title to be used as the file name (lowercase, remove spaces and combin the characters)
-    const filename = `${data.title.toLowerCase().split(' ').join('')}.md`;
+    //const filename = `${data.title.toLowerCase().split(' ').join('')}.md`; //Creates a custom file name using the title data
     //Writing the file to the filesystem and adding the string template literal
-    fs.writeFile(filename, readmeDoc, null, (err) =>
+    fs.writeFile("README.md", readmeDoc, null, (err) =>
       err ? console.log(err) : console.log('ReadMe generated!')
     );
   });
