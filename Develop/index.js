@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+// const generateMarkdown = require('./utils/generateMarkdown');
 //const { json } = require("stream/consumers");
 
 // TODO: Create an array of questions for user input
@@ -18,18 +19,10 @@ inquirer
       name: 'description',
     },
     {
-      type: 'checkbox',
+      type: 'list',
       message: 'License information',
       name: 'license',
-      choices: [
-        {name:"MIT", value: "MIT"},
-        {name:"GPLv2", value: "GPLv2"}, 
-        {name:"Apache", value: "Apache"}, 
-        {name:"GLPv3", value: "GLPv3"}, 
-        {name:"BSD 3-clause", value: "BSD 3-clause"}, 
-        {name:"Unlicense", value: "Unlicense"},
-        ],
-
+      choices: ['MIT', 'GPLv2', 'Apache', 'GPLv3', 'BSD 3-clause', 'Unlicense']
     },
     {
       type: 'input',
@@ -68,7 +61,6 @@ inquirer
 //function writeToFile(fileName, data) {
 //}
 .then((data) => {
-
     const readmeTemp = ({
         title,
         description,
@@ -83,10 +75,10 @@ inquirer
     }) =>
     `
     
-${renderLicenseBadge(license)}    
+    
 
 # Project Title: ${title}
-
+${renderLicenseBadge(license)}
 ## Description
     ${description}
 
@@ -111,7 +103,7 @@ ${renderLicenseBadge(license)}
     ${usage}
 
 ## License
-    This application is  covered under the [${license}]license.
+    This application is  covered under the [${license}] license.
 
 ## Contributors
     ${contributors}
@@ -140,24 +132,27 @@ Or email me via: ${email}
 function renderLicenseBadge(license) {
     switch (license) {
       case "MIT":
-       return licenseBadge = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+       return licenseBadge = "[![license: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
         break;
       case "GPLv2":
-         return licenseBadge = "[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)";
+         return licenseBadge = "[![license: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)";
         break;
       case "Apache":
-        return licenseBadge = "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
+        return licenseBadge = "[![license: Apache](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
         break;
       case "GPLv3":
-       return licenseBadge =  "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)";
+       return licenseBadge =  "[![license: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)";
         break;
       case "BSD 3-clause":
-        return licenseBadge =  "[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)";
+        return licenseBadge =  "[![license BSD 3-clause](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)";
         break;
       case "Unlicense":
         return licenseBadge = licenseBadge = "";
+      default:
     }
     }
+
+    
 
 
 // TODO: Create a function to initialize app
@@ -165,3 +160,4 @@ function init() {}
 
 // Function call to initialize app
 init();
+
